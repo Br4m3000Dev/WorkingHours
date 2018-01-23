@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<String> call, Response<String> response) {
                 if (response.isSuccessful()) {
                     new AlertDialog.Builder(MainActivity.this)
-                            .setTitle("test")
+                            .setTitle(R.string.alert)
                             .setMessage(response.body())
                             .create()
                             .show();

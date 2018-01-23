@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Working Hours</string>
+    <string name="alert">Alert</string>
+    <string name="confirmPassword">Confirm Password</string>
+    <string name="registerBtn">Register</string>
+    <string name="loginBtn">Login</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
 </resources>
