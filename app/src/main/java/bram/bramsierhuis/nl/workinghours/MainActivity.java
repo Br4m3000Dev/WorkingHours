@@ -1,26 +1,21 @@
 package bram.bramsierhuis.nl.workinghours;
 
-import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.EditText;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-
+/*
     @BindView(R.id.usernameEditText) EditText usernameEditText;
     @BindView(R.id.passEditText) EditText passEditText;
     @BindView(R.id.confirmPassEditText) EditText confirmPassEditText;
 
     private Call<String> registerApiCall;
     private Call<String> loginApiCall;
-
+*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +23,18 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
+    @OnClick(R.id.loginBtn)
+    public void onLogin(){
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.registerBtn)
+    public void onRegister(){
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
+    }
+/*
     @Override
     public void onStop() {
         super.onStop();
@@ -52,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if (response.isSuccessful()) {
+                    //TODO Handle register
                     new AlertDialog.Builder(MainActivity.this)
                             .setTitle("test")
                             .setMessage(response.body())
@@ -80,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if (response.isSuccessful()) {
+                    //TODO Handle login
                     new AlertDialog.Builder(MainActivity.this)
                             .setTitle(R.string.alert)
                             .setMessage(response.body())
@@ -95,5 +104,5 @@ public class MainActivity extends AppCompatActivity {
                 //TODO A network error occurred
             }
         });
-    }
+    }*/
 }
