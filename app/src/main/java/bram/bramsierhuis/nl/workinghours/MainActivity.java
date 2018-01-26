@@ -21,6 +21,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @OnClick(R.id.button)
+    public void onNext(){
+        Intent intent = new Intent(this, SubmitTimesActivity.class);
+        startActivity(intent);
+    }
+
     @OnClick(R.id.loginBtn)
     public void onLogin(){
         Intent intent = new Intent(this, LoginActivity.class);

@@ -11,4 +11,7 @@
     <string name="register_header">Register</string>
     <string name="registration_successful">Registration successful.</string>
     <string name="ok">OK</string>
+    <string name="nav_header">Hours worked: </string>
+    <string name="open">open</string>
+    <string name="close">close</string>
 </resources>
