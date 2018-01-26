@@ -3,6 +3,7 @@ package bram.bramsierhuis.nl.workinghours;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 import butterknife.BindView;
@@ -17,6 +18,7 @@ public class LoginActivity extends AppCompatActivity {
 
     @BindView(R.id.usernameEditText) EditText usernameEditText;
     @BindView(R.id.passEditText) EditText passEditText;
+    @BindView(R.id.stayLoggedInCheckBox) CheckBox stayLoggedInCheckBox;
 
     private Call<String> loginApiCall;
 
@@ -47,12 +49,23 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if (response.isSuccessful()) {
-                    //TODO Handle login
-                    new AlertDialog.Builder(LoginActivity.this)
-                            .setTitle(R.string.alert)
-                            .setMessage(response.body())
-                            .create()
-                            .show();
+                    if(response.body().equals("Login succesfull. ")){
+                        if(stayLoggedInCheckBox.isChecked()){
+                            SaveSharedPreference.setUserName(LoginActivity.this, usernameEditText.getText().toString());
+                        } else{
+                            SaveSharedPreference.setUserName(LoginActivity.this, "");
+                        }
+
+                        //TODO Intent
+                        GlobalVariables.setUsername(usernameEditText.getText().toString());
+
+                    } else{
+                        new AlertDialog.Builder(LoginActivity.this)
+                                .setTitle(R.string.alert)
+                                .setMessage(response.body())
+                                .create()
+                                .show();
+                    }
                 } else {
                     //TODO Server responded with an error
                 }
