@@ -1,6 +1,7 @@
 package bram.bramsierhuis.nl.workinghours;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.CheckBox;
@@ -56,8 +57,9 @@ public class LoginActivity extends AppCompatActivity {
                             SaveSharedPreference.setUserName(LoginActivity.this, "");
                         }
 
-                        //TODO Intent
                         GlobalVariables.setUsername(usernameEditText.getText().toString());
+                        Intent intent = new Intent(LoginActivity.this, SubmitTimesActivity.class);
+                        startActivity(intent);
 
                     } else{
                         new AlertDialog.Builder(LoginActivity.this)
